@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cards Gallery</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'search/main.css' %}" />
+  </head>
+  <body>
+    <section class="gallery-block cards-gallery">
+      <div class="container">
+        <div class="heading">
+          <a href="{% url 'home' %}">
+            <img
+              src="https://learningequality.org/media/press_logos/youtube.png"
+              width="200px"
+            />
+          </a>
+          <form method="POST">
+            {% csrf_token %}
+            <input
+              type="search"
+              class="form-control"
+              name="search"
+              placeholder="Search..."
+            />
+            <button
+              style="margin-top:10px;"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Search Here
+            </button>
+          </form>
+        </div>
+        <hr />
+        <hr />
+
+        <div class="row">
+          {% for video in videos%}
+          <div class="col-md-6 col-lg-4">
+            <div class="card border-0 transform-on-hover">
+              <iframe
+                allowfullscreen
+                src="{{ video.url }}"
+                frameborder="2px"
+              ></iframe>
+              <div class="card-body">
+                <p class="card-text">
+                  {{ video.title }}
+                </p>
+                <a class="btn btn-primary" href="{{ video.youtube }}"
+                  >View in Youtube</a
+                >
+                <small class="text-muted">{{ video.duration }} mins</small>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+      baguetteBox.run(".cards-gallery", { animation: "slideIn" });
+    </script>
+  </body>
+</html>
