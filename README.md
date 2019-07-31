@@ -5,35 +5,21 @@
 
 It was made using **Python 3.7** + **Django** and database is **SQLite**.
 **Bootstrap** was used for styling.
-Testing is done using **untitest** module.
 
-There is a login and registration functionality included.
-
-User has his own blog page, where he can add new blog posts. 
-Every authenticated user can comment on posts made by other users.
-Home page is paginated list of all posts.
-Non-authenticated users can see all blog posts, but cannot add new posts or comment.
-
-App is covered with tests.
+Anyone can search and play video and also able to view that video in youtube.
 
 ## Prerequisites
 
-\[Optional\] Install virtual environment:
+Install virtual environment:
 
 ```bash
-$ python -m virtualenv env
+$ virtualenv .
 ```
 
-\[Optional\] Activate virtual environment:
-
-On macOS and Linux:
-```bash
-$ source env/bin/activate
-```
-
+ Activate virtual environment:
 On Windows:
 ```bash
-$ .\env\Scripts\activate
+$ .\Scripts\activate
 ```
 
 Install dependencies:
